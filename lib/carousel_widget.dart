@@ -5,7 +5,7 @@ class ImageCarouselWidget extends StatefulWidget {
   final List<Image> images;
   final Color selectedImageBorderColor;
   final Color unselectedImageBorderColor;
-  final double imageHeight;
+  final double featureImageHeight;
   final double selectedImageBorderWidth;
   final double unselectedImageBorderWidth;
   final double borderRadius;
@@ -13,25 +13,28 @@ class ImageCarouselWidget extends StatefulWidget {
   final Border featureImageBorder;
   final List<BoxShadow> featureImageBoxShadow;
   final Color backgroundColor;
+  final double placeholderImageHeight;
 
   ImageCarouselWidget(
       {this.images,
       this.selectedImageBorderColor,
       this.unselectedImageBorderColor,
-      this.imageHeight,
+      this.featureImageHeight,
       this.selectedImageBorderWidth,
       this.unselectedImageBorderWidth,
       this.borderRadius,
       this.featureImageBorderRadius,
       this.featureImageBorder,
       this.featureImageBoxShadow,
-      this.backgroundColor});
+      this.backgroundColor,
+      this.placeholderImageHeight});
 
   @override
   _ImageCarouselWidgetState createState() => _ImageCarouselWidgetState();
 }
 
 class _ImageCarouselWidgetState extends State<ImageCarouselWidget> {
+  /// [index] maintains the current selected image in the list
   int index = 0;
 
   onTap(int index) {
@@ -42,47 +45,50 @@ class _ImageCarouselWidgetState extends State<ImageCarouselWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(18.0),
-          child: Container(
-            decoration: BoxDecoration(
-                color: widget.backgroundColor,
-                borderRadius:
-                    BorderRadius.circular(widget.featureImageBorderRadius),
-                border: widget.featureImageBorder,
-                boxShadow: widget.featureImageBoxShadow),
-            height: widget.imageHeight,
-            child: Center(
-              child: ClipRRect(
+    return Container(
+      color: widget.backgroundColor,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: widget.backgroundColor,
                   borderRadius:
                       BorderRadius.circular(widget.featureImageBorderRadius),
-                  child: widget.images[index]),
+                  border: widget.featureImageBorder,
+                  boxShadow: widget.featureImageBoxShadow),
+              height: widget.featureImageHeight,
+              child: Center(
+                child: ClipRRect(
+                    borderRadius:
+                        BorderRadius.circular(widget.featureImageBorderRadius),
+                    child: widget.images[index]),
+              ),
             ),
           ),
-        ),
-        Container(
-          height: 100,
-          child: ListView.builder(
-            itemCount: widget.images.length,
-            itemBuilder: (ctx, i) {
-              return ImagePlaceHolderWidget(
-                  widget.images[i],
-                  index == i,
-                  onTap,
-                  i,
-                  widget.selectedImageBorderColor,
-                  widget.unselectedImageBorderColor,
-                  widget.selectedImageBorderWidth,
-                  widget.unselectedImageBorderWidth,
-                  widget.borderRadius,
-                  widget.backgroundColor);
-            },
-            scrollDirection: Axis.horizontal,
-          ),
-        )
-      ],
+          Container(
+            height: widget.placeholderImageHeight + 16,
+            child: ListView.builder(
+              itemCount: widget.images.length,
+              itemBuilder: (ctx, i) {
+                return ImagePlaceHolderWidget(
+                    widget.images[i],
+                    index == i,
+                    onTap,
+                    i,
+                    widget.selectedImageBorderColor,
+                    widget.unselectedImageBorderColor,
+                    widget.selectedImageBorderWidth,
+                    widget.unselectedImageBorderWidth,
+                    widget.borderRadius,
+                    widget.backgroundColor);
+              },
+              scrollDirection: Axis.horizontal,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
