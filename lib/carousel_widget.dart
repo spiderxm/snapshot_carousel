@@ -1,18 +1,41 @@
 import 'package:flutter/material.dart';
 
-/// Returns a Image Carousel Widget
+/// Image Carousel Widget - displays all images and interactivity.
 class ImageCarouselWidget extends StatefulWidget {
+  /// List of Image
   final List<Image> images;
+
+  /// Selected Image Border Color
   final Color selectedImageBorderColor;
+
+  /// Unselected Image Border Color
   final Color unselectedImageBorderColor;
+
+  /// feature image height
   final double featureImageHeight;
+
+  /// Selected Image Border Width
   final double selectedImageBorderWidth;
+
+  /// Unselected Image Border Width
   final double unselectedImageBorderWidth;
+
+  /// Border Radius of placeholder image
   final double borderRadius;
+
+  /// Border Radius of feature image
   final double featureImageBorderRadius;
+
+  /// Feature Image border
   final Border featureImageBorder;
+
+  /// Feature Image BoxShadow
   final List<BoxShadow> featureImageBoxShadow;
+
+  /// Background color of widget
   final Color backgroundColor;
+
+  /// Placeholder Image height.
   final double placeholderImageHeight;
 
   ImageCarouselWidget(
@@ -93,16 +116,36 @@ class _ImageCarouselWidgetState extends State<ImageCarouselWidget> {
   }
 }
 
+/// Widget for Placeholder Image
 class ImagePlaceHolderWidget extends StatelessWidget {
+  /// Image widget to be displayed.
   final Image image;
+
+  /// Bool value which tells whether this widget is selected.
   final bool isSelected;
+
+  /// Callback function
   final Function onTap;
+
+  /// int index
   final int index;
+
+  /// Selected placeholder image border color
   final Color selectedImageBorderColor;
+
+  /// Unselected placeholder image border color
   final Color unselectedImageBorderColor;
+
+  /// Selected placeholder image border width
   final double selectedImageBorderWidth;
+
+  /// Unselected placeholder image border width
   final double unselectedImageBorderWidth;
+
+  /// Border Radius
   final double borderRadius;
+
+  /// Background color
   final Color backgroundColor;
 
   ImagePlaceHolderWidget(
@@ -125,9 +168,8 @@ class ImagePlaceHolderWidget extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
-          child: FlatButton(
-              padding: EdgeInsets.all(0),
-              onPressed: () {
+          child: GestureDetector(
+              onTap: () {
                 onTap(index);
               },
               child: Container(

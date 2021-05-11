@@ -1,4 +1,3 @@
-```dart
 import 'package:flutter/material.dart';
 import 'package:snapshot_carousel/snapshot_carousel.dart';
 
@@ -42,5 +41,3 @@ class InfoScreen extends StatelessWidget {
     ));
   }
 }
-
-```
