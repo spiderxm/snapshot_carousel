@@ -33,10 +33,25 @@ class InfoScreen extends StatelessWidget {
               "https://d2f9uwgpmber13.cloudfront.net/public/uploads/mobile/a9b4f4f1e7a144941d9c072e13937eab")
         ],
             backgroundColor: Colors.grey,
-            imageHeight: 280,
+            featureImageHeight: 300,
             placeholderImageHeight: 100,
             selectedImageBorderColor: Colors.amberAccent,
             unselectedImageBorderColor: Colors.black),
+
+        /// Snapshot Carousel with custom border width and border
+        SnapShotCarousel.snapShotCarousel([
+          Image.network(
+              "https://d2f9uwgpmber13.cloudfront.net/public/uploads/mobile/7c902eb8a6f1f3453fc9e0e99f34838c"),
+          Image.network(
+              "https://d2f9uwgpmber13.cloudfront.net/public/uploads/mobile/d774dd3de09fe0ecf043ddb9383c76bc"),
+          Image.network(
+              "https://d2f9uwgpmber13.cloudfront.net/public/uploads/mobile/87e5d8fda7b970c4fe5ffd23ad400436"),
+          Image.network(
+              "https://d2f9uwgpmber13.cloudfront.net/public/uploads/mobile/a9b4f4f1e7a144941d9c072e13937eab")
+        ],
+            selectedImageBorderWidth: 2,
+            unselectedImageBorderWidth: 2,
+            featureImageBorder: Border.all(color: Colors.blue, width: 2)),
       ],
     ));
   }

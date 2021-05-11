@@ -2,3 +2,7 @@
 * Added new features.
 * Proper documentation.
 
+
+## [0.0.3]
+* Adding proper example
+
