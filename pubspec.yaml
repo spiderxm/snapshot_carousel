@@ -1,7 +1,7 @@
 name: snapshot_carousel
-description: Flutter Package for image carousel
+description: Flutter Package for image carousel which can be used to make amazing carousel in your app.
 version: 0.0.1
-homepage:
+homepage: https://github.com/spiderxm/snapshot_carousel
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
